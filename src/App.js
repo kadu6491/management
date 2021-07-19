@@ -10,10 +10,18 @@ import {
 import Login from "./pages/login/Login";
 
 function App() {
+  const [dark, setDark] = React.useState(false)
+
+  const handleDark = () => {
+    setDark(!dark)
+  }
+
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={Login}/>
+        <Route path="/login">
+            <Login dark={dark} handleDark={handleDark} />
+        </Route>
       </Switch>
     </Router>
   );
