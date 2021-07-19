@@ -1,9 +1,21 @@
+import React from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+
+import Login from "./pages/login/Login";
 
 function App() {
   return (
-    <div>
-      <h4>Hello</h4>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login}/>
+      </Switch>
+    </Router>
   );
 }
 
