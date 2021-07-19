@@ -6,13 +6,13 @@ import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
 
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-
 import useStyles from './style'
 
 import { LIGHT } from '../../components/color/LightMode';
 
 import DarkInput from '../../components/forms/DarkInput';
 import LightInput from '../../components/forms/LightInput';
+
 
 const Login = ({dark, handleDark}) => {
     const classes = useStyles()
