@@ -10,10 +10,12 @@ import {
 import Login from "./pages/login/Login";
 
 function App() {
-  const [dark, setDark] = React.useState(false)
+  const result = localStorage.getItem("dark")
+  const [dark, setDark] = React.useState(JSON.parse(result))
 
   const handleDark = () => {
     setDark(!dark)
+    localStorage.setItem("dark", !dark)
   }
 
   return (
