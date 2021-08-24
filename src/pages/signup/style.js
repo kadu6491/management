@@ -6,10 +6,14 @@ const useStyles = makeStyles((theme) => ({
         // backgroundColor: "red",
         position: 'absolute',
         width: "100%",
-        height: "100%",
+        
         [theme.breakpoints.up('sm')]:{
             padding: theme.spacing(8),
+        },
+        [theme.breakpoints.down('xs')]:{
+            paddingBottom: theme.spacing(8),
         }
+
     },
     paper: {
       marginTop: theme.spacing(8),

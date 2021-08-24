@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {Container, Typography, Grid} from '@material-ui/core';
-import {Checkbox, FormControlLabel} from '@material-ui/core';
 import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
 
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import useStyles from './style'
 
@@ -14,12 +12,20 @@ import DarkInput from '../../components/forms/DarkInput';
 import LightInput from '../../components/forms/LightInput';
 
 
-const Login = ({dark, handleDark}) => {
+const Register = ({dark, handleDark}) => {
     const classes = useStyles()
 
     const onSubmit = (e) => {
         e.preventDefault()
     }
+    const query = new URLSearchParams(window.location.search)
+    const ssd = query.get('ssd')
+
+    console.log(ssd)
+
+    useEffect(() => {
+        document.title = "GFN - New Account"
+    }, [])
 
     return (
         <Box 
@@ -29,7 +35,7 @@ const Login = ({dark, handleDark}) => {
             flexDirection="column"
             alignItems="center"
             className={classes.container}
-            // style={{backgroundColor: dark && "#0a0a0a"}}
+            style={{backgroundColor: dark && "#0a0a0a"}}
         >
             <CssBaseline />
 
@@ -85,38 +91,65 @@ const Login = ({dark, handleDark}) => {
                         variant="h5"
                         style={{color: dark && "white"}}
                     >
-                        Sign in
+                        Account Creation
                     </Typography>
 
                     <form className={classes.form} noValidate onSubmit={onSubmit}>
                         {dark ? 
                             <DarkInput 
-                                id="username"
-                                name="Username"
-                                label="Username"
+                                id="schoolid"
+                                name="schoolid"
+                                label="School ID"
                                 autoFocus={true}
                             /> :
                             <LightInput 
-                                id="username"
-                                name="Username"
-                                label="Username"
+                                id="schoolid"
+                                name="schoolid"
+                                label="School ID"
                                 autoFocus={true}
                             />
                         }
 
                         {dark ? 
                             <DarkInput 
-                                id="password"
-                                name="password"
-                                label="Password"
-                                type="password"
-                                autoFocus={false}
+                                id="firstname"
+                                name="firstname"
+                                label="First Name"
+                                
                             /> :
                             <LightInput 
-                                id="password"
-                                name="password"
-                                label="Password"
-                                autoFocus={false}
+                                id="firstname"
+                                name="firstname"
+                                label="First Name"
+                                
+                            />
+                        }
+
+                        {dark ? 
+                            <DarkInput 
+                                id="lastname"
+                                name="lastname"
+                                label="Last Name"
+                            /> :
+                            <LightInput 
+                                id="lastname"
+                                name="lastname"
+                                label="Last Name"
+                            />
+                        }
+
+                        {dark ? 
+                            <DarkInput 
+                                id="dob"
+                                name="dob"
+                                label="Date Of Birth"
+                                placeholder="Example: 12/31/1986"
+                            /> :
+                            <LightInput 
+                                id="dob"
+                                name="dob"
+                                label="Date Of Birth"
+                                placeholder="Example: 12/31/1986"
                             />
                         }
 
@@ -133,9 +166,9 @@ const Login = ({dark, handleDark}) => {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
-                            endIcon={<ArrowForwardIcon fontSize="small" />}
+                            
                         >
-                            Sign In
+                            Submit
                         </Button>
                     </form>
 
@@ -143,23 +176,16 @@ const Login = ({dark, handleDark}) => {
                         <Button
                             style={{color: dark && "white"}}
                             className={classes.actionBTN}
-                            href="/activate"
+                            href="/login"
                         >
-                            Create Account?
+                            Login?
                         </Button>
 
                         <Button
                             style={{color: dark && "white"}}
                             className={classes.actionBTN}
                         >
-                            Forgot Password?
-                        </Button>
-
-                        <Button
-                            style={{color: dark && "white"}}
-                            className={classes.actionBTN}
-                        >
-                            Forgot Username?
+                            Am a parent?
                         </Button>
                    </div>
                 </div>
@@ -168,4 +194,4 @@ const Login = ({dark, handleDark}) => {
     )
 }
 
-export default Login
+export default Register

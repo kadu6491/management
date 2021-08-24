@@ -8,6 +8,9 @@ import {
 
 
 import Login from "./pages/login/Login";
+import Register from "./pages/signup/Register";
+
+import "./App.css"
 
 function App() {
   const result = localStorage.getItem("dark")
@@ -17,13 +20,25 @@ function App() {
     setDark(!dark)
     localStorage.setItem("dark", !dark)
   }
+
+  if(dark)
+  {
+    document.body.style = 'background: #0a0a0a'
+  }
+  else {
+    document.body.style = 'background: white'
+  }
     // Test this comments
-    
+
   return (
     <Router>
       <Switch>
-        <Route path="/login">
+        <Route exact path="/login">
             <Login dark={dark} handleDark={handleDark} />
+        </Route>
+
+        <Route exact path="/activate">
+            <Register dark={dark} handleDark={handleDark} />
         </Route>
       </Switch>
     </Router>
