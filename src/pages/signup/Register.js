@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 import {Container, Typography, Grid} from '@material-ui/core';
 import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
 
 import useStyles from './style'
@@ -10,10 +11,16 @@ import { LIGHT } from '../../components/color/LightMode';
 
 import DarkInput from '../../components/forms/DarkInput';
 import LightInput from '../../components/forms/LightInput';
+import AlertMSG from '../../components/alerts/AlertMSG';
 
+const errormsg = "Error! please contact your administrator"
 
 const Register = ({dark, handleDark}) => {
     const classes = useStyles()
+
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(true)
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -83,6 +90,7 @@ const Register = ({dark, handleDark}) => {
                     </Box>
                 </Box>
            </Hidden>
+            
 
             <Container maxWidth="xs">
                 <div className={classes.paper}>
@@ -166,9 +174,10 @@ const Register = ({dark, handleDark}) => {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
-                            
+                            disabled={loading}
+                            style={{backgroundColor: loading ? "#333533" : null, color: "white"}}
                         >
-                            Submit
+                            {loading ? "Please wait, verifying..." : "Submit"}
                         </Button>
                     </form>
 
@@ -189,6 +198,12 @@ const Register = ({dark, handleDark}) => {
                         </Button>
                    </div>
                 </div>
+            </Container>
+
+            <Container maxWidth="sm">
+                <Box mt={3}>
+                    {error ? <AlertMSG severity="error" msg={errormsg} dark={dark}/> : null}
+                </Box>
             </Container>
         </Box>
     )

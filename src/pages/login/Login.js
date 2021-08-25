@@ -12,10 +12,14 @@ import { LIGHT } from '../../components/color/LightMode';
 
 import DarkInput from '../../components/forms/DarkInput';
 import LightInput from '../../components/forms/LightInput';
+import AlertMSG from '../../components/alerts/AlertMSG';
 
+const errormsg = "Invalid username or password"
 
 const Login = ({dark, handleDark}) => {
     const classes = useStyles()
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(true)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -163,6 +167,11 @@ const Login = ({dark, handleDark}) => {
                         </Button>
                    </div>
                 </div>
+            </Container>
+            <Container maxWidth="sm">
+                <Box mt={3}>
+                    {error ? <AlertMSG severity="error" msg={errormsg} dark={dark}/> : null}
+                </Box>
             </Container>
         </Box>
     )
