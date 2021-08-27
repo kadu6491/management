@@ -16,7 +16,7 @@ import AlertMSG from '../../components/alerts/AlertMSG';
 
 const errormsg = "Invalid username or password"
 
-const Login = ({dark, handleDark}) => {
+const Username = ({dark, handleDark}) => {
     const classes = useStyles()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -89,41 +89,56 @@ const Login = ({dark, handleDark}) => {
                         variant="h5"
                         style={{color: dark && "white"}}
                     >
-                        Sign in
+                        Forgot Username
                     </Typography>
 
                     <form className={classes.form} noValidate onSubmit={onSubmit}>
+                        
                         {dark ? 
                             <DarkInput 
-                                id="username"
-                                name="Username"
-                                label="Username"
+                                id="schooldid"
+                                name="schooldid"
+                                label="School ID"
                                 autoFocus={true}
                             /> :
                             <LightInput 
-                                id="username"
-                                name="Username"
-                                label="Username"
+                                id="schooldid"
+                                name="schooldid"
+                                label="School ID"
                                 autoFocus={true}
                             />
                         }
 
                         {dark ? 
                             <DarkInput 
-                                id="password"
-                                name="password"
-                                label="Password"
-                                type="password"
-                                autoFocus={false}
+                                id="lastname"
+                                name="lastname"
+                                label="Last Name"
+                                autoFocus={true}
                             /> :
                             <LightInput 
-                                id="password"
-                                name="password"
-                                label="Password"
-                                type="password"
-                                autoFocus={false}
+                                id="lastname"
+                                name="lastname"
+                                label="Last Name"
+                                autoFocus={true}
                             />
                         }
+
+                        {dark ? 
+                            <DarkInput 
+                                id="dob"
+                                name="dob"
+                                label="Date Of Birth"
+                                placeholder="Example: 12/31/1986"
+                            /> :
+                            <LightInput 
+                                id="dob"
+                                name="dob"
+                                label="Date Of Birth"
+                                placeholder="Example: 12/31/1986"
+                            />
+                        }
+
 
 
                         {/* <FormControlLabel
@@ -140,7 +155,7 @@ const Login = ({dark, handleDark}) => {
                             className={classes.submit}
                             endIcon={<ArrowForwardIcon fontSize="small" />}
                         >
-                            Sign In
+                            Next
                         </Button>
                     </form>
 
@@ -148,26 +163,11 @@ const Login = ({dark, handleDark}) => {
                         <Button
                             style={{color: dark && "white"}}
                             className={classes.actionBTN}
-                            href="/activate"
+                            href="/"
                         >
-                            Create Account?
+                            Cancel
                         </Button>
 
-                        <Button
-                            style={{color: dark && "white"}}
-                            className={classes.actionBTN}
-                            href="/forgotpwd"
-                        >
-                            Forgot Password?
-                        </Button>
-
-                        <Button
-                            style={{color: dark && "white"}}
-                            className={classes.actionBTN}
-                            href="/forgotuser"
-                        >
-                            Forgot Username?
-                        </Button>
                    </div>
                 </div>
             </Container>
@@ -180,4 +180,4 @@ const Login = ({dark, handleDark}) => {
     )
 }
 
-export default Login
+export default Username

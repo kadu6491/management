@@ -11,6 +11,8 @@ import Login from "./pages/login/Login";
 import Register from "./pages/signup/Register";
 
 import "./App.css"
+import Password from "./pages/forgot/Password";
+import Username from "./pages/forgot/Username";
 
 function App() {
   const result = localStorage.getItem("dark")
@@ -33,12 +35,20 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/login">
+        <Route exact path="/">
             <Login dark={dark} handleDark={handleDark} />
         </Route>
 
         <Route exact path="/activate">
             <Register dark={dark} handleDark={handleDark} />
+        </Route>
+
+        <Route exact path="/forgotpwd">
+            <Password dark={dark} handleDark={handleDark} />
+        </Route>
+
+        <Route exact path="/forgotuser">
+            <Username dark={dark} handleDark={handleDark} />
         </Route>
       </Switch>
     </Router>

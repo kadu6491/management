@@ -19,7 +19,7 @@ const Register = ({dark, handleDark}) => {
     const classes = useStyles()
 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(true)
+    const [error, setError] = useState(false)
 
 
     const onSubmit = (e) => {
@@ -185,17 +185,17 @@ const Register = ({dark, handleDark}) => {
                         <Button
                             style={{color: dark && "white"}}
                             className={classes.actionBTN}
-                            href="/login"
+                            href="/"
                         >
-                            Login?
+                            Already register? Login
                         </Button>
 
-                        <Button
+                        {/* <Button
                             style={{color: dark && "white"}}
                             className={classes.actionBTN}
                         >
                             Am a parent?
-                        </Button>
+                        </Button> */}
                    </div>
                 </div>
             </Container>
