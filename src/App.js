@@ -13,6 +13,7 @@ import Register from "./pages/signup/Register";
 import "./App.css"
 import Password from "./pages/forgot/Password";
 import Username from "./pages/forgot/Username";
+import NewPWD from "./pages/new/NewPWD";
 
 function App() {
   const result = localStorage.getItem("dark")
@@ -41,6 +42,10 @@ function App() {
 
         <Route exact path="/activate">
             <Register dark={dark} handleDark={handleDark} />
+        </Route>
+
+        <Route exact path="/activate/newpwd">
+            <NewPWD dark={dark} handleDark={handleDark} />
         </Route>
 
         <Route exact path="/forgotpwd">
