@@ -25,7 +25,7 @@ const DarkInputs = withStyles({
     },
   })(TextField);
 
-const DarkInput = ({id, label, name, type, autoFocus, placeholder}) => {
+const DarkInput = ({id, label, name, type, autoFocus, placeholder, onChange}) => {
     return (
         <DarkInputs 
             variant="outlined"
@@ -44,6 +44,7 @@ const DarkInput = ({id, label, name, type, autoFocus, placeholder}) => {
                 style: { color: 'white'}
             }}
             placeholder={placeholder}
+            onChange={onChange}
         />
     )
 }

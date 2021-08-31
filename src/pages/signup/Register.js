@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 
 import {Container, Typography, Grid} from '@material-ui/core';
 import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
 
 
 import useStyles from './style'
@@ -13,6 +12,8 @@ import DarkInput from '../../components/forms/DarkInput';
 import LightInput from '../../components/forms/LightInput';
 import AlertMSG from '../../components/alerts/AlertMSG';
 
+import api from '../../api'
+
 const errormsg = "Error! please contact your administrator"
 
 const Register = ({dark, handleDark}) => {
@@ -21,14 +22,30 @@ const Register = ({dark, handleDark}) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
+    const [firstname, setFirstName] = useState()
+
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value)
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
+
+        api.post('/api/register/', {firstname}).then(resp => {
+            console.log(resp.data)
+            if(resp.data.msg === 'success'){
+                console.log("Happy!!")
+                setLoading(false)
+            }
+            else {
+                setError(true)
+                setLoading(false)
+            }
+        })
     }
     const query = new URLSearchParams(window.location.search)
     const ssd = query.get('ssd')
-
-    console.log(ssd)
 
     useEffect(() => {
         document.title = "GFN - New Account"
@@ -123,13 +140,13 @@ const Register = ({dark, handleDark}) => {
                                 id="firstname"
                                 name="firstname"
                                 label="First Name"
-                                
+                                onChange={handleFirstName}
                             /> :
                             <LightInput 
                                 id="firstname"
                                 name="firstname"
                                 label="First Name"
-                                
+                                onChange={handleFirstName}
                             />
                         }
 
