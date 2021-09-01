@@ -5,8 +5,8 @@ WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
 
-RUN npm install -g npm
-RUN npm install
+RUN npm install --legacy-peer-deps
+# RUN npm install
 
 COPY . .
 RUN npm run build
