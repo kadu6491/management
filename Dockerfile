@@ -6,7 +6,6 @@ COPY package.json .
 COPY yarn.lock .
 
 RUN npm install --legacy-peer-deps
-RUN npm audit fix
 # RUN npm install
 
 COPY . .
