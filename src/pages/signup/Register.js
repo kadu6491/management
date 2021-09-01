@@ -13,30 +13,48 @@ import LightInput from '../../components/forms/LightInput';
 import AlertMSG from '../../components/alerts/AlertMSG';
 
 import api from '../../api'
+import { useHistory } from 'react-router-dom';
 
 const errormsg = "Error! please contact your administrator"
 
 const Register = ({dark, handleDark}) => {
     const classes = useStyles()
+    const history = useHistory()
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
+    const [id, setID] = useState()
     const [firstname, setFirstName] = useState()
+    const [lastname, setLastName] = useState()
+    const [dob, setDOB] = useState()
+
+    const handleID = (e) => {
+        setID(e.target.value)
+    }
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
+    }
+
+    const handleLastName = (e) => {
+        setLastName(e.target.value)
+    }
+
+    const handleDOB = (e) => {
+        setDOB(e.target.value)
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
 
-        api.post('/api/register/', {firstname}).then(resp => {
-            console.log(resp.data)
+        api.post('/api/register/', {id, firstname, lastname, dob}).then(resp => {
+            setLoading(false)
+            // console.log(resp.data)
             if(resp.data.msg === 'success'){
-                console.log("Happy!!")
-                setLoading(false)
+                localStorage.setItem('getoken', resp.data.access_token)
+                history.push('/activate/newpwd?gesd=npd1')
             }
             else {
                 setError(true)
@@ -44,8 +62,8 @@ const Register = ({dark, handleDark}) => {
             }
         })
     }
-    const query = new URLSearchParams(window.location.search)
-    const ssd = query.get('ssd')
+    // const query = new URLSearchParams(window.location.search)
+    // const ssd = query.get('ssd')
 
     useEffect(() => {
         document.title = "GFN - New Account"
@@ -62,7 +80,7 @@ const Register = ({dark, handleDark}) => {
             style={{backgroundColor: dark && "#0a0a0a"}}
         >
             <CssBaseline />
-
+            
            <Hidden xsDown>
                 <Box 
                     bgcolor={dark ? "#242424" : "#e2e2e2"}
@@ -108,6 +126,13 @@ const Register = ({dark, handleDark}) => {
                 </Box>
            </Hidden>
             
+          <Hidden smUp>
+            <Container maxWidth="sm" style={{marginBottom: "-21px"}}>
+                <Box mt={3}>
+                    {error ? <AlertMSG severity="error" msg={errormsg} dark={dark}/> : null}
+                </Box>
+            </Container>
+          </Hidden>
 
             <Container maxWidth="xs">
                 <div className={classes.paper}>
@@ -125,12 +150,14 @@ const Register = ({dark, handleDark}) => {
                                 id="schoolid"
                                 name="schoolid"
                                 label="School ID"
+                                onChange={handleID}
                                 autoFocus={true}
                             /> :
                             <LightInput 
                                 id="schoolid"
                                 name="schoolid"
                                 label="School ID"
+                                onChange={handleID}
                                 autoFocus={true}
                             />
                         }
@@ -155,11 +182,13 @@ const Register = ({dark, handleDark}) => {
                                 id="lastname"
                                 name="lastname"
                                 label="Last Name"
+                                onChange={handleLastName}
                             /> :
                             <LightInput 
                                 id="lastname"
                                 name="lastname"
                                 label="Last Name"
+                                onChange={handleLastName}
                             />
                         }
 
@@ -169,12 +198,14 @@ const Register = ({dark, handleDark}) => {
                                 name="dob"
                                 label="Date Of Birth"
                                 placeholder="Example: 12/31/1986"
+                                onChange={handleDOB}
                             /> :
                             <LightInput 
                                 id="dob"
                                 name="dob"
                                 label="Date Of Birth"
                                 placeholder="Example: 12/31/1986"
+                                onChange={handleDOB}
                             />
                         }
 
@@ -216,12 +247,14 @@ const Register = ({dark, handleDark}) => {
                    </div>
                 </div>
             </Container>
-
-            <Container maxWidth="sm">
+            <Hidden xsDown>
+            <Container maxWidth="sm" style={{marginBottom: "10px"}}>
                 <Box mt={3}>
                     {error ? <AlertMSG severity="error" msg={errormsg} dark={dark}/> : null}
                 </Box>
             </Container>
+          </Hidden>
+           
         </Box>
     )
 }

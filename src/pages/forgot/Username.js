@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 import {Container, Typography, Grid} from '@material-ui/core';
-import {Checkbox, FormControlLabel} from '@material-ui/core';
 import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
 
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
