@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-import {Container, Typography, Grid} from '@material-ui/core';
-import {CssBaseline, Button, Switch, Box, Hidden} from '@material-ui/core';
+import {Container, Typography} from '@material-ui/core';
+import {CssBaseline, Button, Box, Hidden} from '@material-ui/core';
 
 
 import useStyles from './style'
@@ -14,6 +14,7 @@ import AlertMSG from '../../components/alerts/AlertMSG';
 
 import api from '../../api'
 import { useHistory } from 'react-router-dom';
+import Boards from '../../components/board/Boards';
 
 const errormsg = "Error! please contact your administrator"
 
@@ -81,50 +82,7 @@ const Register = ({dark, handleDark}) => {
         >
             <CssBaseline />
             
-           <Hidden xsDown>
-                <Box 
-                    bgcolor={dark ? "#242424" : "#e2e2e2"}
-                    display="flex"
-                    justifyContent="space-between"
-                    className={classes.header}
-                    width="80%"
-                    m={4}
-                    p={4}
-                    borderRadius={10}
-                >
-                    <Box display="flex" alignItems="center">
-                        <Typography 
-                            variant="h6" 
-                            color="textSecondary" 
-                            component="p" 
-                            className={classes.title}
-                            style={{color: dark ? "#d5d5d5" : LIGHT.textColor}}
-                        >
-                            GFN Education
-                        </Typography>
-                    </Box>
-
-                    <Box display="flex" alignItems="center" pr={2}>
-                        <Typography 
-                            component="div" 
-                            style={{color: dark ? "white" : LIGHT.textColor}}
-                        >
-                            <Grid component="label" container alignItems="center" spacing={1}>
-                                {/* <Grid item>Off</Grid> */}
-                                <Grid item>
-                                    <Switch
-                                        checked={dark}
-                                        onChange={handleDark}
-                                        name="checkedA"
-                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                    />
-                                </Grid>
-                                <Grid item>Dark Mode</Grid>
-                            </Grid>
-                        </Typography>
-                    </Box>
-                </Box>
-           </Hidden>
+            <Boards dark={dark} handleDark={handleDark} classes={classes} LIGHT={LIGHT}/>
             
           <Hidden smUp>
             <Container maxWidth="sm" style={{marginBottom: "-21px"}}>

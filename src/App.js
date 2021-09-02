@@ -14,6 +14,7 @@ import "./App.css"
 import Password from "./pages/forgot/Password";
 import Username from "./pages/forgot/Username";
 import NewPWD from "./pages/new/NewPWD";
+import Home from "./navigations/Home";
 
 function App() {
   const result = localStorage.getItem("dark")
@@ -54,6 +55,10 @@ function App() {
 
         <Route exact path="/forgotuser">
             <Username dark={dark} handleDark={handleDark} />
+        </Route>
+
+        <Route exact path="/accounts">
+            <Home />
         </Route>
       </Switch>
     </Router>
