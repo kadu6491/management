@@ -14,7 +14,7 @@ import "./App.css"
 import Password from "./pages/forgot/Password";
 import Username from "./pages/forgot/Username";
 import NewPWD from "./pages/new/NewPWD";
-import Home from "./navigations/Home";
+import NavApp from "./navigations/NavApp";
 
 function App() {
   const result = localStorage.getItem("dark")
@@ -35,33 +35,37 @@ function App() {
     // Test this comments
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-            <Login dark={dark} handleDark={handleDark} />
-        </Route>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+              <Login dark={dark} handleDark={handleDark} />
+          </Route>
 
-        <Route exact path="/activate">
-            <Register dark={dark} handleDark={handleDark} />
-        </Route>
+          <Route exact path="/activate">
+              <Register dark={dark} handleDark={handleDark} />
+          </Route>
 
-        <Route exact path="/activate/newpwd">
-            <NewPWD dark={dark} handleDark={handleDark} />
-        </Route>
+          <Route exact path="/activate/newpwd">
+              <NewPWD dark={dark} handleDark={handleDark} />
+          </Route>
 
-        <Route exact path="/forgotpwd">
-            <Password dark={dark} handleDark={handleDark} />
-        </Route>
+          <Route exact path="/forgotpwd">
+              <Password dark={dark} handleDark={handleDark} />
+          </Route>
 
-        <Route exact path="/forgotuser">
-            <Username dark={dark} handleDark={handleDark} />
-        </Route>
+          <Route exact path="/forgotuser">
+              <Username dark={dark} handleDark={handleDark} />
+          </Route>
 
-        <Route exact path="/accounts">
-            <Home />
-        </Route>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+
+      <NavApp
+          dark={dark}
+          handleDark={handleDark}
+      />
+    </>
   );
 }
 
