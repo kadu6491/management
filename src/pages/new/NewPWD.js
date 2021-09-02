@@ -64,6 +64,7 @@ const NewPWD = ({dark, handleDark}) => {
                     if(resp.data.msg === 'success')
                     {
                         setLoading(false)
+                        localStorage.removeItem("getoken")
                         history.push('/')
                     }
                     else {
@@ -96,6 +97,8 @@ const NewPWD = ({dark, handleDark}) => {
             }
             else if (resp.data === 'expired'){
                 setTimeOut(true)
+                localStorage.removeItem("getoken")
+                history.push('/activate')
             }
             else {
                 localStorage.removeItem("getoken")
