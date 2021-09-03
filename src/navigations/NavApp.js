@@ -16,7 +16,7 @@ const NavApp = ({dark, handleDark}) => {
             document.body.style.backgroundColor = "#000"
         }
         else {
-            document.body.style.backgroundColor = "#eee"
+            document.body.style.backgroundColor = "white"
         }
 
     }, [])

@@ -12,8 +12,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     appBar: {
         [theme.breakpoints.up('sm')]: {
-          width: `calc(100% - ${drawerWidth}px)`,
-          marginLeft: drawerWidth,
+        //   width: `calc(100% - ${drawerWidth}px)`,
+        //   marginLeft: drawerWidth,
         },
         borderRadius: 0,
         color: 'black',
@@ -33,6 +33,7 @@ const NavAppBar = ({handleOpen, title, dark}) => {
 
     return (
         <AppBar 
+            position="static"
             className={classes.appBar}
             style={{backgroundColor: dark ? DARK.boxColor : LIGHT.navColor, color: dark && "#e9ecef"}}
         >

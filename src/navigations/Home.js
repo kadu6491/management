@@ -5,6 +5,7 @@ import { Box } from '@material-ui/core'
 
 import SideBarNav from '../system/sidebar/SideBarNav'
 import NavAppBar from '../system/header/NavAppBar'
+import PanelBar from '../system/sidebar/PanelBar'
 
 const Home = ({dark, handleDark}) => {
     const [mobile, setMobile] = useState(false)
@@ -17,17 +18,12 @@ const Home = ({dark, handleDark}) => {
         setMobile(false)
     }
     return (
-        <div 
-            style={{display: "flex", flexDirection: "row", justifyContent:"space-evenly"}}
-        >
+        <div style={{display: "flex", flexDirection: "column"}}>
             <Box bgcolor="red">
                 <NavAppBar handleOpen={handleOpen} title={"Home"} dark={dark}/>
-                <SideBarNav 
-                    dark={dark} 
-                    handleDark={handleDark}
-                    mobile={mobile}
-                    handleClose={handleClose}
-                />
+            </Box>
+            <Box bgcolor="green">
+                <PanelBar dark={dark} handleDark={handleDark}/>
             </Box>
             
         </div>
