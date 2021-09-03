@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { Box, Button, Divider, IconButton, Tooltip, Typography } from '@material-ui/core'
+import { Badge, Box, Button, Divider, IconButton, Tooltip, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
 import HomeIcon from '@material-ui/icons/Home';
@@ -191,13 +191,21 @@ const PanelBar = ({dark, handleDark}) => {
 
                 {open ? 
                     <ListMenu 
-                        icon={<NotificationsOutlinedIcon style={{ color: dark && "white"}} fontSize="small"/>}
+                        icon={
+                            <Badge badgeContent={4} color="secondary">
+                                <NotificationsOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />
+                            </Badge>
+                        }
                         text="Notifications"
                         dark={dark}
                     /> : 
                     <ButtonIcon 
                         title="Notifications"
-                        icons={<NotificationsOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />}
+                        icons={
+                            <Badge badgeContent={4} color="secondary">
+                                <NotificationsOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />
+                            </Badge>
+                        }
                         dark={dark}
                     />
                 }
