@@ -79,11 +79,11 @@ const closeStyle = {
     transition: 'width 0.5s',
 }
 
-function ButtonIcon({dark, title, icons}) {
+function ButtonIcon({dark, title, icons, onClick}) {
     const classes = useStyles()
     return (
         <Tooltip title={title} placement="right" arrow>
-            <IconButton className={dark && classes.iconBtn}>
+            <IconButton className={dark && classes.iconBtn} onClick={onClick}>
                 {icons}
                 {/* <HomeIcon style={{ color: dark && "white"}} fontSize="medium" /> */}
             </IconButton>
@@ -239,6 +239,7 @@ const PanelBar = ({dark, handleDark}) => {
                         title="Display"
                         icons={<DisplayToggle dark={dark} handleDark={handleDark} />}
                         dark={dark}
+                        onClick={handleDark}
                     />
                 }
                 {/* <Tooltip title="Display Mode" placement="right" arrow>
