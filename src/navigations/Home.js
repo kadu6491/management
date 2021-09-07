@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react'
 
-import { Box } from '@material-ui/core'
+import { Box, Hidden } from '@material-ui/core'
 
 import SideBarNav from '../system/sidebar/SideBarNav'
 import NavAppBar from '../system/header/NavAppBar'
@@ -23,7 +23,18 @@ const Home = ({dark, handleDark}) => {
                 <NavAppBar handleOpen={handleOpen} title={"Home"} dark={dark}/>
             </Box>
             <Box bgcolor="green">
-                <PanelBar dark={dark} handleDark={handleDark}/>
+                <Hidden xsDown>
+                    <PanelBar dark={dark} handleDark={handleDark}/>
+                </Hidden>
+
+                <Hidden smUp implementation="js">
+                    <SideBarNav 
+                        dark={dark}
+                        mobile={mobile}
+                        handleDark={handleDark}
+                        handleClose={handleClose}
+                    />
+                </Hidden>
             </Box>
             
         </div>

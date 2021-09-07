@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Box, IconButton, Tooltip } from '@material-ui/core';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const DisplayToggle = ({dark, handleDark}) => {

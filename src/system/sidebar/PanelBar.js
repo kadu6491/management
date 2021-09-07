@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { Badge, Box, Button, Divider, IconButton, Tooltip, Typography } from '@material-ui/core'
+import { Badge, Box, Button, Divider, IconButton, Tooltip, Typography, List } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
 import HomeIcon from '@material-ui/icons/Home';
@@ -152,6 +152,19 @@ const PanelBar = ({dark, handleDark}) => {
                     />
                 }
 
+                {open ? 
+                    <ListMenu 
+                        icon={<AddCircleOutlinedIcon style={{ color: dark && "white"}} fontSize="small"/>}
+                        text="Add Parent"
+                        dark={dark}
+                    /> : 
+                    <ButtonIcon 
+                        title="Add Parent"
+                        icons={<AddCircleOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />}
+                        dark={dark}
+                    />
+                }
+
                 <Divider 
                     style={{width: "100%", backgroundColor: dark && "#7a7a7a", marginTop: "6px"}}
                 />
@@ -172,19 +185,6 @@ const PanelBar = ({dark, handleDark}) => {
                     <ButtonIcon 
                         title="Settings"
                         icons={<SettingsOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />}
-                        dark={dark}
-                    />
-                }
-
-                {open ? 
-                    <ListMenu 
-                        icon={<AddCircleOutlinedIcon style={{ color: dark && "white"}} fontSize="small"/>}
-                        text="Add Parent"
-                        dark={dark}
-                    /> : 
-                    <ButtonIcon 
-                        title="Add Parent"
-                        icons={<AddCircleOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />}
                         dark={dark}
                     />
                 }
@@ -215,6 +215,7 @@ const PanelBar = ({dark, handleDark}) => {
                         icon={<DisplayToggle dark={dark} handleDark={handleDark} />}
                         text="Display"
                         dark={dark}
+                        handleClick={handleDark}
                     /> : 
                     <ButtonIcon 
                         title="Display"

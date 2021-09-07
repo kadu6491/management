@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute'
     },
     sidePaperD: {
-      backgroundColor: DARK.navColor,
+      backgroundColor: "#1a1a1a",
       width: drawerWidth,
     },
     closeBox: {
@@ -38,6 +38,26 @@ const useStyles = makeStyles((theme) => ({
       width: drawerWidth,
       backgroundColor: LIGHT.navColor,
     },
+    small: {
+      width: theme.spacing(6),
+      height: theme.spacing(6),
+      marginTop: theme.spacing(1),
+    },
+    text: {
+      paddingTop: 14,
+      fontWeight: "600",
+      letterSpacing: "1px",
+      fontSize: 14,
+      fontFamily: 'sans-serif',
+    },
+    btn: {
+      fontSize: "8px"
+    },
+    iconBtn: {
+      '&:hover': {
+        backgroundColor: "#000"
+      }
+    }
   }));
 
 export default useStyles
