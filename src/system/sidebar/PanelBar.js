@@ -10,6 +10,7 @@ import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import DisplayToggle from '../../components/buttons/DisplayToggle';
 import ListMenu from '../../components/list/ListMenu';
@@ -205,6 +206,23 @@ const PanelBar = ({dark, handleDark}) => {
                             <Badge badgeContent={4} color="secondary">
                                 <NotificationsOutlinedIcon style={{ color: dark && "white"}} fontSize="medium" />
                             </Badge>
+                        }
+                        dark={dark}
+                    />
+                }
+
+                {open ? 
+                    <ListMenu 
+                        icon={
+                            <ExitToAppIcon style={{ color: dark && "white"}} fontSize="medium" />
+                        }
+                        text="Log Out"
+                        dark={dark}
+                    /> : 
+                    <ButtonIcon 
+                        title="Log Out"
+                        icons={
+                            <ExitToAppIcon style={{ color: dark && "white"}} fontSize="medium" />
                         }
                         dark={dark}
                     />
