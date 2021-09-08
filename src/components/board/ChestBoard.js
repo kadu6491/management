@@ -2,6 +2,7 @@ import React from 'react'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Box, Divider, Paper, Typography } from '@material-ui/core';
+import SchoolIcon from '@material-ui/icons/School';
 
 const drawerWidth = 185;
 const windowWidth = window.innerWidth
@@ -11,17 +12,38 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
             float: "right",
+        },
+        // backgroundColor: "yellow",
+    },
+    main: {
+        width: "100%",
+        [theme.breakpoints.up('sm')]: {
             display: "flex",
             justifyContent: "space-evenly",
             marginTop: theme.spacing(7)
             // flexShrink: 0,
         },
-        // backgroundColor: "yellow",
         marginTop: theme.spacing(5)
+    },
+
+    main2: {
+        width: "100%",
+        [theme.breakpoints.up('sm')]: {
+            display: "flex",
+            justifyContent: "space-evenly"
+            // flexShrink: 0,
+        },
     },
     summary: {
         [theme.breakpoints.up('sm')]: {
             width: "50%",
+            marginTop: theme.spacing(1)
+            // flexShrink: 0,
+        },
+        marginTop: theme.spacing(1),
+    },
+    service: {
+        [theme.breakpoints.up('sm')]: {
             marginTop: theme.spacing(1)
             // flexShrink: 0,
         },
@@ -92,78 +114,129 @@ const ChestBoard = ({open, dark}) => {
             style={windowWidth > 600 && open ? openStyle : windowWidth < 600 ? mobileStyle : closeStyle}
         >
             <Box 
-                m={2}
-                p={3} 
-                bgcolor={dark ? "#353535" : "#eeeeee"}
-                className={classes.summary}
-                style={{
-                    color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
-                }}
+                className={classes.main} 
+                // bgcolor="red"
             >
-               <Typography>
-                   User Summary
-               </Typography>
-               
-               <Paper 
-                    className={classes.paper1}
-                    elevation={0}
+                <Box 
+                    m={2}
+                    p={3} 
+                    bgcolor={dark ? "#353535" : "#eeeeee"}
+                    className={classes.summary}
+                    style={{
+                        color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
+                    }}
                 >
-                    <Typography 
-                        variant="p"
-                        style={{color: dark ? "#adb5bd" : "#232323"}}
-                        className={classes.title}
-                    >
-                        Name <span className={classes.span}>Peter Griffin </span>
+                    <Typography>
+                        User Summary
                     </Typography>
-                    <Divider 
-                        className={classes.divider}
-                        style={{backgroundColor: dark && "#eee"}}
-                    />
+                    
+                    <Paper 
+                            className={classes.paper1}
+                            elevation={0}
+                        >
+                            <Typography 
+                                variant="p"
+                                style={{color: dark ? "#adb5bd" : "#232323"}}
+                                className={classes.title}
+                            >
+                                Name <span className={classes.span}>Peter Griffin </span>
+                            </Typography>
+                            <Divider 
+                                className={classes.divider}
+                                style={{backgroundColor: dark && "#eee"}}
+                            />
 
-                    <br />
-                    <Typography 
-                        variant="p"
-                        style={{color: dark ? "#adb5bd" : "#232323"}}
-                        className={classes.title}
+                            <br />
+                            <Typography 
+                                variant="p"
+                                style={{color: dark ? "#adb5bd" : "#232323"}}
+                                className={classes.title}
+                            >
+                                Username <span className={classes.span}>pgriff5432</span>
+                            </Typography>
+                            <Divider 
+                                className={classes.divider}
+                                style={{backgroundColor: dark && "#eee"}}
+                            />
+                    </Paper>
+                    </Box>
+
+                    <Box 
+                        m={2}
+                        p={3}  
+                        bgcolor={dark ? "#353535" : "#eeeeee"}
+                        className={classes.summary}
+                        style={{
+                            color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
+                        }}
                     >
-                        Username <span className={classes.span}>pgriff5432</span>
+                    <Typography>
+                        Account Summary
                     </Typography>
-                    <Divider 
-                        className={classes.divider}
-                        style={{backgroundColor: dark && "#eee"}}
-                    />
-               </Paper>
+                    
+                    <Paper 
+                            className={classes.paper1}
+                            elevation={0}
+                        >
+                            <Typography 
+                                variant="p"
+                                style={{color: dark ? "#e9ecef" : "#232323"}}
+                                className={classes.title}
+                            >
+                                Email <span className={classes.span}>pgriff5432@vec.edu</span>
+                            </Typography>
+                            <Divider 
+                                className={classes.divider}
+                                style={{backgroundColor: dark && "#eee"}}
+                            />
+                    </Paper>
+                </Box>
             </Box>
 
-            <Box 
-                m={2}
-                p={3}  
-                bgcolor={dark ? "#353535" : "#eeeeee"}
-                className={classes.summary}
-                style={{
-                    color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
-                }}
+            <Box
+                // bgcolor="pink"
+                className={classes.main2}
             >
-               <Typography>
-                   Account Summary
-               </Typography>
-               
-               <Paper 
-                    className={classes.paper1}
-                    elevation={0}
+                <Box 
+                    m={2}
+                    p={3} 
+                    bgcolor={dark ? "#353535" : "#eeeeee"}
+                    width={windowWidth > 600 ? "20%" : null}
+                    className={classes.service}
+                    style={{
+                        color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
+                    }}
                 >
+                    <Typography>
+                        Role
+                    </Typography>
+
                     <Typography 
-                        variant="p"
-                        style={{color: dark ? "#e9ecef" : "#232323"}}
+                        align="center"
+                        // variant="p"
+                        style={{color: dark ? "#e9ecef" : "#232323", paddingTop: "25px"}}
                         className={classes.title}
                     >
-                        Email <span className={classes.span}>pgriff5432@vec.edu</span>
+                        <SchoolIcon />
+                        <p>Student</p>
                     </Typography>
-                    <Divider 
-                        className={classes.divider}
-                        style={{backgroundColor: dark && "#eee"}}
-                    />
-               </Paper>
+                </Box>
+
+                <Box 
+                    m={2}
+                    p={3} 
+                    bgcolor={dark ? "#353535" : "#eeeeee"}
+                    width={windowWidth > 600 ? "66%" : null}
+                    className={classes.service}
+                    style={{
+                        color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
+                    }}
+                >
+                    <Typography>
+                        Services
+                    </Typography>
+
+                </Box>
             </Box>
         </div>
     )
