@@ -91,9 +91,8 @@ function ButtonIcon({dark, title, icons, onClick}) {
     )
 }
 
-const PanelBar = ({dark, handleDark}) => {
+const PanelBar = ({dark, handleDark, open, handleOpen}) => {
     const classes = useStyles()
-    const [open, setOpen] = useState(false)
 
     return (
         <div className={classes.root}>
@@ -111,7 +110,7 @@ const PanelBar = ({dark, handleDark}) => {
                 >
                     <Button 
                         className={classes.actionBtn}
-                        onClick={() => setOpen(!open)}
+                        onClick={handleOpen}
                     >
                         {open ? <ArrowBackOutlinedIcon style={{fontSize: "10px"}}/> : <ArrowForwardOutlinedIcon style={{fontSize: "13px"}}/>}
                     </Button>

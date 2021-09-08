@@ -1,5 +1,5 @@
 export const LIGHT = {
-    navColor: '#FBFBFB',
+    navColor: '#eee', // #FBFBFB
     boxColor: '#e3e8ee', // #e3e8ee
     textColor: '#626262',
     btnColor: '#547AFF',
