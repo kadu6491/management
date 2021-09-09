@@ -17,13 +17,16 @@ const useStyles = makeStyles((theme) => ({
     },
     main: {
         width: "100%",
-        [theme.breakpoints.up('sm')]: {
-            display: "flex",
+        display: "flex",
+        flexDirection: 'column',
+        [theme.breakpoints.up('md')]: {
             justifyContent: "space-evenly",
+            flexDirection: 'row',
             marginTop: theme.spacing(7)
             // flexShrink: 0,
         },
-        marginTop: theme.spacing(5)
+        marginTop: theme.spacing(5),
+        
     },
 
     main2: {
@@ -35,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     summary: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             width: "50%",
             marginTop: theme.spacing(1)
             // flexShrink: 0,
