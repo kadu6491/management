@@ -1,8 +1,12 @@
 import React from 'react'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Box, Divider, Paper, Typography } from '@material-ui/core';
+import { Box, Divider, Paper, TableCell, Typography, Button, TableRow, Hidden } from '@material-ui/core';
+
 import SchoolIcon from '@material-ui/icons/School';
+
+import RegularTable from '../table/RegularTable';
+import { height } from '@mui/system';
 
 const drawerWidth = 185;
 const windowWidth = window.innerWidth
@@ -91,6 +95,13 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: "20px"
         },
         marginBottom: "15px"
+    },
+    role: {
+        
+        [theme.breakpoints.up('md')]: {
+            marginTop: 50,
+        },
+        // paddingBottom: "20px"
     }
 }))
 
@@ -105,6 +116,41 @@ const closeStyle = {
 }
 const mobileStyle = {
     width: '100%'
+}
+
+function createTableData(n, l, s, e) {
+    return {n, l, s, e};
+}
+
+
+const row = [
+    createTableData("Email", "pgriff5432@vec.edu", "active", " - not found - "),
+    createTableData("Management", "pgriff5432", "active", " - not found - "),
+]
+
+function MakeHead({dark}) {
+    return (
+        <TableRow>
+            <TableCell 
+                style={{color: dark ? "#d3d3d3" : "#232323"}}
+                padding="none"
+            >Service Name</TableCell>
+
+            <TableCell 
+                style={{color: dark ? "#d3d3d3" : "#232323"}}
+                padding="none"
+            >Login</TableCell>
+
+            <TableCell 
+                style={{color: dark ? "#d3d3d3" : "#232323"}}
+                padding="none"
+            >Status</TableCell>
+
+            <TableCell 
+                style={{color: dark ? "#d3d3d3" : "#232323"}}
+            >Expiration</TableCell>
+        </TableRow>
+    )
 }
 
 const ChestBoard = ({open, dark}) => {
@@ -210,19 +256,26 @@ const ChestBoard = ({open, dark}) => {
                         color: dark && "white", border: `1px solid ${dark ? "#696969" : "#d3d3d3"}`,
                     }}
                 >
+                    
                     <Typography>
                         Role
                     </Typography>
 
-                    <Typography 
-                        align="center"
-                        // variant="p"
-                        style={{color: dark ? "#e9ecef" : "#232323", paddingTop: "25px"}}
-                        className={classes.title}
-                    >
-                        <SchoolIcon />
-                        <p>Student</p>
-                    </Typography>
+                   <Paper
+                        className={classes.role}
+                        style={{backgroundColor: "transparent"}}
+                        elevation={0}
+                   >
+                        <Typography 
+                            align="center"
+                            // variant="p"
+                            style={{color: dark ? "#e9ecef" : "#232323", paddingTop: "25px"}}
+                            className={classes.title}
+                        >
+                            <SchoolIcon />
+                            <p>Student</p>
+                        </Typography>
+                   </Paper>
                 </Box>
 
                 <Box 
@@ -238,7 +291,32 @@ const ChestBoard = ({open, dark}) => {
                     <Typography>
                         Services
                     </Typography>
-
+                    <br />
+                    <Hidden smDown>
+                        <Paper style={{backgroundColor: "transparent"}} elevation={0}>
+                            <RegularTable 
+                                component={Paper}
+                                head={<MakeHead dark={dark} />}
+                                rows={row}
+                                dark={dark}
+                            />
+                        </Paper>
+                    </Hidden>
+                    <Box 
+                        // bgcolor="red"
+                        m={1}
+                        p={1}
+                        display="flex"
+                        justifyContent="flex-end"
+                    >
+                        <Button 
+                            variant="contained" 
+                            color="primary"
+                            size="small"
+                        >
+                            See More
+                        </Button>    
+                    </Box>
                 </Box>
             </Box>
         </div>
