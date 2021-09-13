@@ -22,7 +22,7 @@ const Home = ({dark, handleDark}) => {
     return (
         <div style={{display: "flex", flexDirection: "column"}}>
             <Box bgcolor="red">
-                <NavAppBar handleOpen={handleOpen} title={"Home"} dark={dark}/>
+                <NavAppBar handleOpen={handleOpen} title={"Home"} dark={dark} handleDark={handleDark}/>
             </Box>
             <Box>
                 <Hidden xsDown>
